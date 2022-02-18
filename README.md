@@ -1,1 +1,3 @@
-# tokyotech-wifi-kit
+# TokyoTechWifiKit
+
+A description of this package.

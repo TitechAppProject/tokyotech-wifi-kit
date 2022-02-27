@@ -40,6 +40,53 @@ public struct TokyoTechWifi {
         }
     }
     
+    public func loginCiscoMerakiWiFiIfNeed(username: String, password: String) async throws -> Bool {
+        let captiveResult = try await httpClient.send(CaptiveRequest())
+        
+        let captivePageTitle = try parseTitle(html: captiveResult.html)
+        
+        if captivePageTitle.contains("Success") {
+            return false
+        }
+        
+        if captiveResult.html.contains("TokyoTech"), let responseUrl = captiveResult.responseUrl {
+            try await loginCiscoMerakiWiFi(
+                username: username,
+                password: password,
+                captiveHtml: captiveResult.html,
+                responseUrl: responseUrl
+            )
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    public func loginWlanauthNocWiFiIfNeed(username: String, password: String) async throws -> Bool {
+        let captiveResult = try await httpClient.send(CaptiveRequest())
+        
+        let captivePageTitle = try parseTitle(html: captiveResult.html)
+        
+        if captivePageTitle.contains("Success") {
+            return false
+        }
+        
+        if captivePageTitle.contains("Web Authentication Redirect") {
+            try await loginWlanauthNocWiFi(
+                username: username,
+                password: password,
+                captiveHtml: captiveResult.html
+            )
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    public func logoutWlanauthNocWiFi() async throws {
+        _ = try await httpClient.send(WlanauthNocTitechLogoutRequest())
+    }
+    
     func loginCiscoMerakiWiFi(username: String, password: String, captiveHtml: String, responseUrl: URL) async throws {
         let captivePageInputs = try parseHTMLInput(html: captiveHtml)
         let injectedCaptivePageInputs = inject(captivePageInputs, username: username, password: password)

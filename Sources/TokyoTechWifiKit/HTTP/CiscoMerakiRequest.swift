@@ -30,7 +30,7 @@ struct CiscoMerakiHeadRequest: HTTPRequest {
 struct CiscoMerakiLoginRequest: HTTPRequest {
     let method: HTTPMethod = .post
 
-    let url = URL(string: "https://n335.network-auth.com/TokyoTech/hi/U4Ce4dpf/login?continue_url=https%3A%2F%2Fwww.google.com")!
+    let url = URL(string: "https://n513.network-auth.com/TokyoTech/hi/U4Ce4dpf/login?continue_url=https%3A%2F%2Fwww.google.com")!
 
     let headerFields: [String: String]?
 

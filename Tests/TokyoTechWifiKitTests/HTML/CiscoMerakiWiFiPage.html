@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html>
+<head><meta name='robots' content='none' /><base href="https://n513.network-auth.com/TokyoTech/hi/aHH98cpf/" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title> TokyoTech</title>
+  <style type="text/css" media="screen">
+    html { font-size: 100%;-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+form { margin: 0; }
+label { cursor: pointer; }
+button, input {
+  -webkit-appearance:none;
+  font-size: 100%;
+  margin: 0;
+  vertical-align: baseline;
+  *vertical-align: middle;
+  line-height: normal;
+  *overflow: visible;
+}
+button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
+
+a, a:visited, a:active {color: #fff; text-decoration: none;}
+
+.hidden { display: none; }
+
+body {
+  margin: 0;
+  background: #eee;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.4em;
+  font-family: georgia, palatino, serif;
+}
+
+h1, h2,  h3, p, a {
+  font-family: CiscoSans, helvetica, helvetica neue, verdana, tahoma, sans-serif;
+}
+h1 {
+  font-size: 30px;
+  font-weight: 100;
+  line-height: 35px;
+  color: #555;
+  margin: 0 0 1em;
+}
+h2 {
+  font-size: 14px;
+  font-weight: normal;
+}
+h3 {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: #888;
+}
+p{
+  color: #555;
+}
+
+.link_in_text a { color: #555 }
+
+.header {
+  border-bottom: 1px solid #ddd;
+  padding: 2em 0;
+  margin: 0 0 2em 0;
+}
+
+.header table { width: 100%; }
+#title_cell { vertical-align: bottom; }
+#icon_cell { text-align: center; }
+#icon_cell img {
+  max-width: 200px;
+  max-height: 100px;
+}
+
+#container {
+  max-width: 900px;
+  min-width: 300px;
+  margin: 0 auto;
+  background: #fff;
+  text-align: center;
+}
+
+#content {
+  background: #fff;
+}
+
+#continue {
+  padding: 2em;
+}
+
+#blocked {
+  padding: 2em;
+}
+
+#auth {
+  box-sizing: border-box;
+  padding: 0 1.5em 2em;
+}
+
+#left_col {
+  width: 100%;
+  margin-bottom: 3em;
+  text-align: left;
+}
+
+#right_col {
+  width: 100%;
+  text-align: left;
+  margin-top: 4em;
+  margin: 0 auto;
+}
+
+#account a {
+  color: #1795E6;
+  margin-right:  1em;
+  padding-right: 1em;
+  border-right: 1px solid #ccc;
+}
+
+#account a:hover {
+  color: #0876BD;
+}
+
+#account a:last-child {
+  border: none;
+}
+
+#sign_in {
+  background: #777777;
+  color: #ffffff;
+  border-radius: 2px;
+  margin: 2.5em 0 1em;
+  padding: 1em;
+  box-sizing: border-box;
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+}
+
+#sign_in:hover {
+  opacity: .85;
+}
+
+#blocked_msg {
+  text-align: center;
+  padding: 15px 0;
+}
+
+#claim_ap_msg {
+  text-align: center;
+  padding: 15px 0;
+}
+
+.formarea h3 {
+  line-height: 0;
+}
+
+.formarea input {
+  background: #eee;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  border-radius: 2px;
+  padding: .7em;
+  width: 100%;
+}
+
+#email_field {
+  margin-bottom: 1.5em;
+}
+
+.button {
+  color: #ffffff;
+  background: #777777;
+  padding: 1em 2em;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  display: inline-block;
+  margin: 1em 0;
+}
+
+.button:hover {
+  opacity: .85;
+}
+
+#forgot_password, .form_links:not(.hidden) {
+  display: inline;
+}
+
+#signin_form .form_links {
+  float: right;
+}
+
+#forgot_password a,
+.form_links a {
+  font-size:  12px;
+  color: #1795E6;
+}
+
+#forgot_password a:hover,
+.form_links a:hover {
+  color: #0876BD;
+}
+
+#forgot_password {
+  display: none;
+}
+
+#create_account_form h3 {
+  margin-top: 3em;
+}
+
+.footer {
+  width: 100%;
+  background: #eee;
+  border-top: 1px solid #ddd;
+  padding: 2em 0;
+  text-align: center;
+  display: inline-block;
+}
+
+.footer img {
+  margin: .5em 0;
+}
+
+.meraki_go_footer {
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #ddd;
+  padding: 2em 0;
+  text-align: center;
+  display: inline-block;
+}
+
+.meraki_go_footer img {
+  margin: .5em 0;
+}
+
+.error {
+  background: #eee;
+  border-radius: 2px;
+  border: 1px solid #ddd;
+  margin: 3em 3em 0;
+  box-sizing: border-box;
+  padding: 0 .5em;
+}
+
+.error p {
+  color: #999;
+  font-size: 12px;
+}
+
+.login-error {
+  background: #ffdddd;
+  border-radius: 2px;
+  border: 1px solid #ffb8b8;
+  box-sizing: border-box;
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+.login-error p {
+  color: #ff5959;
+  font-size: 12px;
+}
+
+.login-error img {
+  width: 11px;
+  margin: 5px 7px 0 0;
+}
+
+input:invalid, textarea:invalid { background-color: #f0dddd; }
+.formarea input:invalid, textarea:invalid { border-radius: 1px; -moz-box-shadow: 0px 0px 0px red; -webkit-box-shadow: 0px 0px 0px red; box-shadow: 0px 0px 0px red; }
+.formarea label.invalid {border: none; color: red; min-height: inherit; padding: 5px 0 0; margin: 0;}
+
+@media (min-width: 370px) {
+  #auth {
+    padding: 3em 3em 5em;
+  }
+  #left_col {
+    text-align: center;
+  }
+}
+
+@media (min-width: 550px) {
+  #auth {
+    padding: 3em 3em 5em;
+  }
+  #left_col {
+    width: 70%;
+    margin: 0 auto;
+    padding-bottom: 3em;
+    text-align: center;
+  }
+  #right_col {
+    width: 70%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 730px) {
+  #auth {
+    display: inline-block;
+    padding: 3em 3em 5em;
+  }
+  #left_col {
+    float: left;
+    text-align: left;
+    width: 50%;
+    padding-right: 3em;
+    box-sizing: border-box;
+  }
+  #right_col {
+    float: left;
+    width: 50%;
+    margin: 0;
+    padding-left: 3em;
+    box-sizing: border-box;
+  }
+}
+
+.GoSplash .header {
+  padding-top: 4em;
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.GoSplash #blocked {
+  padding-top: 1em;
+}
+
+.GoSplash .GoSplash__blockedIcon {
+  height: 8em;
+}
+
+.GoSplash .GoSplash__blockedIconLine--primary {
+  fill: #213A44;
+}
+
+.GoSplash .GoSplash__blockedIconLine--accent {
+  fill: #16E4D8;
+}
+
+.GoSplash h1 {
+  font-weight: 300;
+  color: #213A44;
+}
+
+.GoSplash p {
+  color: #666F77;
+}
+
+@media (max-width: 400px) {
+  .GoSplash .GoSplash__blockedIcon {
+    height: 6em;
+  }
+
+  .GoSplash .header {
+    padding-top: 2em;
+    padding-bottom: 0.5em;
+  }
+
+  .GoSplash h1 {
+    font-size: 24px;
+  }
+}
+
+  </style>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+
+<body>
+  <div id="content">
+    <div id="container">
+      <div class="header">
+        <div id="icon_cell"></div>
+      </div>
+
+      <div class="error hidden">
+        <p></p>
+      </div>
+
+      <div id="auth">
+       <div id="left_col">
+          <h1> TokyoTech Login</h1>
+          <p>キャンパス無線LANへようこそ。</p>
+
+          <span style="color:#800000;font-weight:bold;">=== 保守情報 ===</span><br>
+          夏季一斉休業及び大岡山キャンパス停電に伴い停止致します。
+                        <li>停止期間：8月10日(水) 18:00 -  8月16日(火) 10:00</li>
+           		<li>該当エリア：大岡山キャンパス全域</li>
+           		<li>影響：キャンパス無線LANサービス全般停止<br>　　[ SSID: TokyoTech, wi2, wi2_club, eduroam ]</li>
+        </div>
+
+
+        <div id="right_col">
+          <div class="login-error hidden">
+            <p><img alt="Warning_red" src="/images/warning_red.png" /></p>
+          </div>
+          <div id="signin_form" class="formarea">
+                  <form accept-charset="UTF-8" action="https://n513.network-auth.com/TokyoTech/hi/aHH98cpf/login?continue_url=https%3A%2F%2Fwww.google.com" id="sign_in_form" method="post" onsubmit="javascript:return update_form_action_from_headers(document.getElementById(&quot;sign_in_form&quot;));"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+        <div id="signin_form" class="formarea">
+          <h3>ユーザー</h3>
+          <input id="email_field" name="email" type="text">
+          <h3>パスワード</h3>
+          <input id="password_field" name="password" type="password" class="jsAnalyticsExclude">
+          <input class="btn btn-default" id="sign_in" name="commit" type="submit" value="ログイン" />
+        </div>
+      </form>
+      <script type="text/javascript" charset="utf-8">
+                function getButtonContainer() {
+          return document.getElementsByClassName('color_button')[0];
+        }
+
+        function getButton() {
+          return document.getElementsByClassName('btn')[0] || document.getElementsByClassName('button')[0];
+        }
+
+        function disableButton(button) {
+          button.disabled = true;
+          if (button.nodeName == 'A') {
+            button.style.pointerEvents = 'none';
+          } else if (button.nodeName == 'INPUT') {
+            button.style.cursor = 'not-allowed';
+          }
+        }
+
+        function enableButton(button) {
+          button.disabled = false;
+          if (button.nodeName == 'A') {
+            button.style.pointerEvents = 'auto';
+          } else if (button.nodeName == 'INPUT') {
+            button.style.cursor = 'auto';
+          }
+        }
+
+        function handleClick(elem) {
+          var button = getButton();
+          if (elem.checked) {
+            enableButton(button)
+          } else {
+            disableButton(button);
+          }
+        }
+
+        document.addEventListener("DOMContentLoaded", function(event) {
+          var buttonContainer = getButtonContainer();
+          var button = getButton();
+          disableButton(button);
+
+          var gdprConsent = document.createElement('div');
+          var consentMsg = "利用にあたり、以下のネットワーク利用承諾を読んで理解の上、遵守して下さい。\n利用承諾に反する通信が検知された場合には、認識の有無にかかわらず以後の利用を禁止します。\n\n1. 自分自身のログイン・アカウントのみを使用する。\n（ログイン・アカウントの貸借をしない。）\n2. 端末を東工大情報基盤に接続する際に、セキュリティ上の問題がないか十分確認する。\n3. 著作権を侵害しない。\n4. 公序良俗に反した行為を行わない。\n5. ネズミ講等の詐欺行為を行わない。\n6. 名誉毀損・ハラスメントになる行為を行わない。\n7. 不正な攻撃は行わない。\n8. 例示するP2Pソフトウェアおよびそれと同等の通信を行うソフトウェアを利用しない";
+          var consentHTML = '<p style="font-weight:bold">You must consent to the following to access the internet.</p>' +
+            '<div class="flex-container">' +
+              '<input type="checkbox" id="gdpr_checkbox" onchange="handleClick(this)" style="-webkit-appearance: checkbox; margin-right: 5px; width: inherit"/>' +
+              '<pre style="display: inline-flex; margin-top: 0; white-space: pre-wrap;">' +
+                '<label for="gdpr_checkbox" style="font-family: CiscoSans, helvetica, helvetica neue, verdana, tahoma, sans-serif;">' + consentMsg + '</label>' +
+              '</pre>' +
+            '</div>';
+          gdprConsent.innerHTML = consentHTML;
+          if (buttonContainer) {
+            buttonContainer.parentNode.insertBefore(gdprConsent, buttonContainer);
+          } else {
+            button.parentNode.insertBefore(gdprConsent, button);
+          }
+        });
+
+      </script>
+            <div id="forgot_password">
+        <a href="https://account.network-auth.com/account/reset_account_password">I forgot my password</a>
+      </div>
+
+            <script type="text/javascript" charset="utf-8">
+        var link = document.getElementById('resend_email_link');
+        var msg = document.getElementById('resend_email_message');
+        link.addEventListener("click", function(e) {
+          e.preventDefault();
+          var xmlhttp = new XMLHttpRequest();
+          xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
+              if (xmlhttp.status == 200) {
+                msg.innerHTML = "Email sent successfully.";
+              } else {
+                msg.innerHTML = "Your account cannot be verified by email. If you believe you are seeing this message in error, please contact the network administrator.";
+              }
+            }
+          };
+          xmlhttp.open("GET", link.href, true);
+          xmlhttp.send();
+        });
+      </script>
+
+
+            <div class="form_links hidden">
+              <a class="toggle_link" id="create_account_link" href="#">アカウント申請</a>
+            </div>
+          </div>
+
+          <div id="account" class="form_links hidden">
+            <div id="create_account_form" class="formarea hidden">
+              <h2><!-- Self registration is disabled --></h2>
+              <!-- Self registration is disabled -->
+              <div class="form_links">
+                <a class="toggle_link" id="signin_link" href="#">ログイン</a>
+              </div>
+            </div>
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+
+  
+  <div class="footer">
+    <h3>POWERED BY</h3>
+    <img alt="Cisco Meraki" src="/images/cisco-meraki-gray.png" width="100" />
+  </div>
+
+      <script type="text/javascript" charset="utf-8">
+        document.getElementById("create_account_form").style.display = 'none';
+
+        function show_signin() {
+          document.getElementById("signin_form").style.display = 'block';
+          document.getElementById("create_account_form").style.display = 'none';
+          do_prevent(arguments);
+          return false;
+        }
+
+        function show_create_account() {
+          document.getElementById("signin_form").style.display = 'none';
+          document.getElementById("create_account_form").style.display = 'block';
+          do_prevent(arguments);
+          return false;
+        }
+
+        function do_prevent(args) {
+          if(args.length > 0 && typeof(args[0].preventDefault) == 'function')
+            args[0].preventDefault();
+        }
+
+        if (document.addEventListener) {
+          var c_a_l = document.getElementById('create_account_link'); if (c_a_l) { c_a_l.addEventListener('click', show_create_account, true); }
+          var s_l = document.getElementById('signin_link'); if (c_a_l) { s_l.addEventListener('click', show_signin, true); }
+        } else if (document.attachEvent) {
+          var c_a_l = document.getElementById('create_account_link'); if (c_a_l) { c_a_l.attachEvent('onclick', show_create_account); }
+          var s_l = document.getElementById('signin_link'); if (c_a_l) { s_l.attachEvent('onclick', show_signin); }
+        }
+      </script>
+
+      <script type="text/javascript" charset="utf-8">
+        
+              function update_form_action_from_headers(form) {
+        var _request = new XMLHttpRequest();
+        var url = 'https://n513.network-auth.com/TokyoTech/hi/aHH98cpf/login?continue_url=CONTINUE_URL_PLACEHOLDER';
+        _request.open('HEAD', window.location, true);
+        _request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        _request.onreadystatechange = function() {
+          if (_request.readyState === 4) {
+            var continue_url = _request.getResponseHeader('Continue-Url');
+            form.action = url.replace('CONTINUE_URL_PLACEHOLDER', continue_url);
+            form.submit();
+          }
+        }
+        _request.send(null);
+        return false;
+      }
+
+        
+      </script>
+
+</div>
+</body>
+</html>

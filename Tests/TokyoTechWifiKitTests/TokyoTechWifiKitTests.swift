@@ -42,4 +42,14 @@ final class TokyoTechWifiTests: XCTestCase {
         XCTAssertEqual(inputs[3].value, "ログイン")
         XCTAssertEqual(inputs[3].type, .submit)
     }
+    
+    func testCiscoMerakiWiFiPageParsePostURL() throws {
+        let html = try! String(contentsOf: Bundle.module.url(forResource: "CiscoMerakiWiFiPage", withExtension: "html")!)
+        
+        let tokyoTechWiFi = TokyoTechWifi(urlSession: .shared)
+        
+        let postUrl = try tokyoTechWiFi.parsePostURL(html: html)
+        
+        XCTAssertEqual(postUrl, URL(string: "https://n513.network-auth.com/TokyoTech/hi/aHH98cpf/login?continue_url=https%3A%2F%2Fwww.google.com")!)
+    }
 }

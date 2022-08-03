@@ -120,6 +120,12 @@ public struct TokyoTechWifi {
         
         return doc.title ?? ""
     }
+    
+    func parsePostURL(html: String) throws -> URL? {
+        let doc = try HTML(html: html, encoding: .utf8)
+        
+        return URL(string: doc.at_css("form")?["action"] ?? "")
+    }
 
     func parseHTMLInput(html: String) throws -> [HTMLInput] {
         let doc = try HTML(html: html, encoding: .utf8)

@@ -28,6 +28,9 @@ let package = Package(
             dependencies: ["Kanna"]),
         .testTarget(
             name: "TokyoTechWifiKitTests",
-            dependencies: ["TokyoTechWifiKit"]),
+            dependencies: ["TokyoTechWifiKit"],
+            resources: [
+                .process("HTML"),
+            ]),
     ]
 )

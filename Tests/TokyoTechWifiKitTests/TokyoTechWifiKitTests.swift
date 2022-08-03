@@ -18,4 +18,28 @@ final class TokyoTechWifiTests: XCTestCase {
         
         XCTAssertEqual(title, "Success")
     }
+    
+    func testCiscoMerakiWiFiPageParseHTMLInput() throws {
+        let html = try! String(contentsOf: Bundle.module.url(forResource: "CiscoMerakiWiFiPage", withExtension: "html")!)
+        
+        let tokyoTechWiFi = TokyoTechWifi(urlSession: .shared)
+        
+        let inputs = try tokyoTechWiFi.parseHTMLInput(html: html)
+        
+        XCTAssertEqual(inputs[0].name, "utf8")
+        XCTAssertEqual(inputs[0].value, "✓")
+        XCTAssertEqual(inputs[0].type, .hidden)
+        
+        XCTAssertEqual(inputs[1].name, "email")
+        XCTAssertEqual(inputs[1].value, "")
+        XCTAssertEqual(inputs[1].type, .text)
+        
+        XCTAssertEqual(inputs[2].name, "password")
+        XCTAssertEqual(inputs[2].value, "")
+        XCTAssertEqual(inputs[2].type, .password)
+        
+        XCTAssertEqual(inputs[3].name, "commit")
+        XCTAssertEqual(inputs[3].value, "ログイン")
+        XCTAssertEqual(inputs[3].type, .submit)
+    }
 }

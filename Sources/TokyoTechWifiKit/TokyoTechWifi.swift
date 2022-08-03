@@ -88,12 +88,16 @@ public struct TokyoTechWifi {
     }
     
     func loginCiscoMerakiWiFi(username: String, password: String, captiveHtml: String, responseUrl: URL) async throws {
+        guard let postUrl = try parsePostURL(html: captiveHtml) else {
+            return
+        }
         let captivePageInputs = try parseHTMLInput(html: captiveHtml)
         let injectedCaptivePageInputs = inject(captivePageInputs, username: username, password: password)
         
         _ = try await httpClient.send(CiscoMerakiHeadRequest(url: responseUrl))
         
         _ = try await httpClient.send(CiscoMerakiLoginRequest(
+            url: postUrl,
             inputs: injectedCaptivePageInputs,
             referer: responseUrl
         ))

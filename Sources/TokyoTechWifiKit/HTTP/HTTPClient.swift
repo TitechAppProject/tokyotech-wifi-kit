@@ -9,23 +9,40 @@ protocol HTTPClient {
 
 struct HTTPClientImpl: HTTPClient {
     private let urlSession: URLSession
+    #if !canImport(FoundationNetworking)
     private let urlSessionDelegate: URLSessionTaskDelegate
+    #endif
 
     init(urlSession: URLSession) {
         self.urlSession =  urlSession
+        #if !canImport(FoundationNetworking)
         self.urlSessionDelegate = HTTPClientDelegate()
+        #endif
     }
 
     func send(_ request: HTTPRequest) async throws -> (html: String, responseUrl: URL?) {
-        let (data, response) = try await urlSession.data(
-            for: request.generate(cookies: []),
-               delegate: urlSessionDelegate
-        )
+        let (data, response) = try await fetchData(request: request.generate(cookies: []))
 
         return (
             String(data: data, encoding: .utf8) ?? "",
             (response as? HTTPURLResponse)?.url
         )
+    }
+    
+    func fetchData(request: URLRequest) async throws -> (Data, URLResponse) {
+        #if canImport(FoundationNetworking)
+        return try await withCheckedThrowingContinuation { continuation in
+            urlSession.dataTask(with: request) { data, response, error in
+                if let error = error {
+                    continuation.resume(throwing: error)
+                } else {
+                    continuation.resume(returning: (data ?? Data(), response!))
+                }
+            }.resume()
+        }
+        #else
+        return try await urlSession.data(for: request, delegate: urlSessionDelegate)
+        #endif
     }
 }
 

@@ -88,12 +88,16 @@ public struct TokyoTechWifi {
     }
     
     func loginCiscoMerakiWiFi(username: String, password: String, captiveHtml: String, responseUrl: URL) async throws {
+        guard let postUrl = try parsePostURL(html: captiveHtml) else {
+            return
+        }
         let captivePageInputs = try parseHTMLInput(html: captiveHtml)
         let injectedCaptivePageInputs = inject(captivePageInputs, username: username, password: password)
         
         _ = try await httpClient.send(CiscoMerakiHeadRequest(url: responseUrl))
         
         _ = try await httpClient.send(CiscoMerakiLoginRequest(
+            url: postUrl,
             inputs: injectedCaptivePageInputs,
             referer: responseUrl
         ))
@@ -119,6 +123,12 @@ public struct TokyoTechWifi {
         let doc = try HTML(html: html, encoding: .utf8)
         
         return doc.title ?? ""
+    }
+    
+    func parsePostURL(html: String) throws -> URL? {
+        let doc = try HTML(html: html, encoding: .utf8)
+        
+        return URL(string: doc.at_css("form")?["action"] ?? "")
     }
 
     func parseHTMLInput(html: String) throws -> [HTMLInput] {

@@ -30,13 +30,14 @@ struct CiscoMerakiHeadRequest: HTTPRequest {
 struct CiscoMerakiLoginRequest: HTTPRequest {
     let method: HTTPMethod = .post
 
-    let url = URL(string: "https://n513.network-auth.com/TokyoTech/hi/U4Ce4dpf/login?continue_url=https%3A%2F%2Fwww.google.com")!
+    let url: URL
 
     let headerFields: [String: String]?
 
     let body: [String: String]?
 
-    init(inputs: [HTMLInput], referer: URL) {
+    init(url: URL, inputs: [HTMLInput], referer: URL) {
+        self.url = url
         headerFields = [
             "Host": url.host ?? "",
             "Connection": "keep-alive",

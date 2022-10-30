@@ -4,7 +4,7 @@ import FoundationNetworking
 #endif
 import Kanna
 
-enum TokyoTechWifiError: Error {
+public enum TokyoTechWifiError: Error {
     case alreadyConnected
     case otherCaptiveWiFi
 }

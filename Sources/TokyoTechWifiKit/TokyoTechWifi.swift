@@ -4,6 +4,11 @@ import FoundationNetworking
 #endif
 import Kanna
 
+enum TokyoTechWifiError: Error {
+    case alreadyConnected
+    case otherCaptiveWiFi
+}
+
 public struct TokyoTechWifi {
     private let httpClient: HTTPClient
 
@@ -11,13 +16,13 @@ public struct TokyoTechWifi {
         self.httpClient = HTTPClientImpl(urlSession: urlSession)
     }
 
-    public func loginIfNeed(username: String, password: String) async throws -> Bool {
+    public func loginIfNeed(username: String, password: String) async throws {
         let captiveResult = try await httpClient.send(CaptiveRequest())
         
         let captivePageTitle = try parseTitle(html: captiveResult.html)
         
         if captivePageTitle.contains("Success") {
-            return false
+            throw TokyoTechWifiError.alreadyConnected
         }
         
         if captiveResult.html.contains("TokyoTech"), let responseUrl = captiveResult.responseUrl {
@@ -27,26 +32,24 @@ public struct TokyoTechWifi {
                 captiveHtml: captiveResult.html,
                 responseUrl: responseUrl
             )
-            return true
         } else if captivePageTitle.contains("Web Authentication Redirect") {
             try await loginWlanauthNocWiFi(
                 username: username,
                 password: password,
                 captiveHtml: captiveResult.html
             )
-            return true
         } else {
-            return false
+            throw TokyoTechWifiError.otherCaptiveWiFi
         }
     }
     
-    public func loginCiscoMerakiWiFiIfNeed(username: String, password: String) async throws -> Bool {
+    public func loginCiscoMerakiWiFiIfNeed(username: String, password: String) async throws {
         let captiveResult = try await httpClient.send(CaptiveRequest())
         
         let captivePageTitle = try parseTitle(html: captiveResult.html)
         
         if captivePageTitle.contains("Success") {
-            return false
+            throw TokyoTechWifiError.alreadyConnected
         }
         
         if captiveResult.html.contains("TokyoTech"), let responseUrl = captiveResult.responseUrl {
@@ -56,19 +59,18 @@ public struct TokyoTechWifi {
                 captiveHtml: captiveResult.html,
                 responseUrl: responseUrl
             )
-            return true
         } else {
-            return false
+            throw TokyoTechWifiError.otherCaptiveWiFi
         }
     }
     
-    public func loginWlanauthNocWiFiIfNeed(username: String, password: String) async throws -> Bool {
+    public func loginWlanauthNocWiFiIfNeed(username: String, password: String) async throws {
         let captiveResult = try await httpClient.send(CaptiveRequest())
         
         let captivePageTitle = try parseTitle(html: captiveResult.html)
         
         if captivePageTitle.contains("Success") {
-            return false
+            throw TokyoTechWifiError.alreadyConnected
         }
         
         if captivePageTitle.contains("Web Authentication Redirect") {
@@ -77,9 +79,8 @@ public struct TokyoTechWifi {
                 password: password,
                 captiveHtml: captiveResult.html
             )
-            return true
         } else {
-            return false
+            throw TokyoTechWifiError.otherCaptiveWiFi
         }
     }
     

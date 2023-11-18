@@ -1,55 +1,76 @@
 import XCTest
 @testable import TokyoTechWifiKit
 
-final class TokyoTechWifiTests: XCTestCase {
-    func testParseTitle() throws {
-        let tokyoTechWiFi = TokyoTechWifi(urlSession: .shared)
-        
-        let title = try tokyoTechWiFi.parseTitle(html:
-        """
-        <HTML>
-        <HEAD>
-            <TITLE>Success</TITLE>
-        </HEAD>
-        <BODY>Success</BODY>
-        </HTML>
-        """
+final class TokyoTechWifiTests: XCTestCase {    
+    func testLoginIfNeed_Success_TokyoTechWiFi() async throws {
+        let html = try String(contentsOf: Bundle.module.url(forResource: "TokyoTechWiFiLoginPage", withExtension: "html")!)
+        let tokyoTechWiFi = TokyoTechWifi(
+            httpClient: HTTPClientMock(
+                html: html,
+                responseUrl: URL(string: "http://captive.apple.com")
+            )
         )
-        
-        XCTAssertEqual(title, "Success")
+
+        try await tokyoTechWiFi.loginIfNeed(username: "", password: "")
+        XCTAssert(true)
     }
     
-    func testCiscoMerakiWiFiPageParseHTMLInput() throws {
-        let html = try! String(contentsOf: Bundle.module.url(forResource: "CiscoMerakiWiFiPage", withExtension: "html")!)
-        
-        let tokyoTechWiFi = TokyoTechWifi(urlSession: .shared)
-        
-        let inputs = try tokyoTechWiFi.parseHTMLInput(html: html)
-        
-        XCTAssertEqual(inputs[0].name, "utf8")
-        XCTAssertEqual(inputs[0].value, "✓")
-        XCTAssertEqual(inputs[0].type, .hidden)
-        
-        XCTAssertEqual(inputs[1].name, "email")
-        XCTAssertEqual(inputs[1].value, "")
-        XCTAssertEqual(inputs[1].type, .text)
-        
-        XCTAssertEqual(inputs[2].name, "password")
-        XCTAssertEqual(inputs[2].value, "")
-        XCTAssertEqual(inputs[2].type, .password)
-        
-        XCTAssertEqual(inputs[3].name, "commit")
-        XCTAssertEqual(inputs[3].value, "ログイン")
-        XCTAssertEqual(inputs[3].type, .submit)
+    func testLoginIfNeed_Success_SciTokyoWiFi() async throws {
+        let html = try String(contentsOf: Bundle.module.url(forResource: "SciTokyoWiFiLoginPage", withExtension: "html")!)
+        let tokyoTechWiFi = TokyoTechWifi(
+            httpClient: HTTPClientMock(
+                html: html,
+                responseUrl: URL(string: "http://captive.apple.com")
+            )
+        )
+
+        try await tokyoTechWiFi.loginIfNeed(username: "", password: "")
+        XCTAssert(true)
+    }
+
+    func testLoginIfNeed_AlreadyConnectedError() async {
+        let tokyoTechWiFi = TokyoTechWifi(
+            httpClient: HTTPClientMock(
+                html: """
+                <HTML>
+                <HEAD>
+                    <TITLE>Success</TITLE>
+                </HEAD>
+                <BODY>Success</BODY>
+                </HTML>
+                """,
+                responseUrl: URL(string: "http://captive.apple.com")
+            )
+        )
+
+        do {
+            try await tokyoTechWiFi.loginIfNeed(username: "", password: "")
+            XCTFail()
+        } catch {
+            XCTAssertEqual(error as! TokyoTechWifiError, TokyoTechWifiError.alreadyConnected)
+        }
     }
     
-    func testCiscoMerakiWiFiPageParsePostURL() throws {
-        let html = try! String(contentsOf: Bundle.module.url(forResource: "CiscoMerakiWiFiPage", withExtension: "html")!)
-        
-        let tokyoTechWiFi = TokyoTechWifi(urlSession: .shared)
-        
-        let postUrl = try tokyoTechWiFi.parsePostURL(html: html)
-        
-        XCTAssertEqual(postUrl, URL(string: "https://n513.network-auth.com/TokyoTech/hi/aHH98cpf/login?continue_url=https%3A%2F%2Fwww.google.com")!)
+    func testLoginIfNeed_OtherCaptiveWiFiError() async {
+        let tokyoTechWiFi = TokyoTechWifi(
+            httpClient: HTTPClientMock(
+                html: """
+                <HTML>
+                <HEAD>
+                    <TITLE>Need Login!!!</TITLE>
+                </HEAD>
+                <BODY></BODY>
+                </HTML>
+                """,
+                responseUrl: URL(string: "http://captive.apple.com")
+            )
+        )
+
+        do {
+            try await tokyoTechWiFi.loginIfNeed(username: "", password: "")
+            XCTFail()
+        } catch {
+            XCTAssertEqual(error as! TokyoTechWifiError, TokyoTechWifiError.otherCaptiveWiFi)
+        }
     }
 }

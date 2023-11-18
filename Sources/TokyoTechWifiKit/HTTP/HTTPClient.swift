@@ -47,8 +47,11 @@ struct HTTPClientImpl: HTTPClient {
 }
 
 struct HTTPClientMock: HTTPClient {
+    let html: String
+    let responseUrl: URL?
+
     func send(_ request: HTTPRequest) async throws -> (html: String, responseUrl: URL?) {
-        ("", URL(string: "https://example.com")!)
+        (html, responseUrl)
     }
 }
 

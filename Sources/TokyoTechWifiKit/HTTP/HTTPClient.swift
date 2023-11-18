@@ -1,4 +1,5 @@
 import Foundation
+
 #if canImport(FoundationNetworking)
 import FoundationNetworking
 #endif
@@ -14,7 +15,7 @@ struct HTTPClientImpl: HTTPClient {
     #endif
 
     init(urlSession: URLSession) {
-        self.urlSession =  urlSession
+        self.urlSession = urlSession
         #if !canImport(FoundationNetworking)
         self.urlSessionDelegate = HTTPClientDelegate()
         #endif
@@ -28,7 +29,7 @@ struct HTTPClientImpl: HTTPClient {
             (response as? HTTPURLResponse)?.url
         )
     }
-    
+
     func fetchData(request: URLRequest) async throws -> (Data, URLResponse) {
         #if canImport(FoundationNetworking)
         return try await withCheckedThrowingContinuation { continuation in
@@ -64,25 +65,25 @@ class HTTPClientDelegate: URLProtocol, URLSessionTaskDelegate {
         completionHandler: @escaping (URLRequest?) -> Swift.Void
     ) {
         #if DEBUG
-            print("")
-            print("\(response.statusCode) \(task.currentRequest?.httpMethod ?? "") \(task.currentRequest?.url?.absoluteString ?? "")")
-            print("  requestHeader: \(task.currentRequest?.allHTTPHeaderFields ?? [:])")
-            print("  requestBody: \(String(data: task.originalRequest?.httpBody ?? Data(), encoding: .utf8) ?? "")")
-            print("  responseHeader: \(response.allHeaderFields)")
-            print("  redirect -> \(request.httpMethod ?? "") \(request.url?.absoluteString ?? "")")
-            print("")
+        print("")
+        print("\(response.statusCode) \(task.currentRequest?.httpMethod ?? "") \(task.currentRequest?.url?.absoluteString ?? "")")
+        print("  requestHeader: \(task.currentRequest?.allHTTPHeaderFields ?? [:])")
+        print("  requestBody: \(String(data: task.originalRequest?.httpBody ?? Data(), encoding: .utf8) ?? "")")
+        print("  responseHeader: \(response.allHeaderFields)")
+        print("  redirect -> \(request.httpMethod ?? "") \(request.url?.absoluteString ?? "")")
+        print("")
         #endif
-        
+
         completionHandler(request)
     }
 
     func urlSession(_: URLSession, task: URLSessionTask, didFinishCollecting _: URLSessionTaskMetrics) {
         #if DEBUG
-            print("")
-            print("200 \(task.currentRequest!.httpMethod!) \(task.currentRequest!.url!.absoluteString)")
-            print("  requestHeader: \(task.currentRequest!.allHTTPHeaderFields ?? [:])")
-            print("  requestBody: \(String(data: task.originalRequest!.httpBody ?? Data(), encoding: .utf8) ?? "")")
-            print("")
+        print("")
+        print("200 \(task.currentRequest!.httpMethod!) \(task.currentRequest!.url!.absoluteString)")
+        print("  requestHeader: \(task.currentRequest!.allHTTPHeaderFields ?? [:])")
+        print("  requestBody: \(String(data: task.originalRequest!.httpBody ?? Data(), encoding: .utf8) ?? "")")
+        print("")
         #endif
     }
 }

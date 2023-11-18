@@ -1,7 +1,8 @@
 import XCTest
+
 @testable import TokyoTechWifiKit
 
-final class TokyoTechWifiTests: XCTestCase {    
+final class TokyoTechWifiTests: XCTestCase {
     func testLoginIfNeed_Success_TokyoTechWiFi() async throws {
         let html = try String(contentsOf: Bundle.module.url(forResource: "TokyoTechWiFiLoginPage", withExtension: "html")!)
         let tokyoTechWiFi = TokyoTechWifi(
@@ -14,7 +15,7 @@ final class TokyoTechWifiTests: XCTestCase {
         try await tokyoTechWiFi.loginIfNeed(username: "", password: "")
         XCTAssert(true)
     }
-    
+
     func testLoginIfNeed_Success_SciTokyoWiFi() async throws {
         let html = try String(contentsOf: Bundle.module.url(forResource: "SciTokyoWiFiLoginPage", withExtension: "html")!)
         let tokyoTechWiFi = TokyoTechWifi(
@@ -32,13 +33,13 @@ final class TokyoTechWifiTests: XCTestCase {
         let tokyoTechWiFi = TokyoTechWifi(
             httpClient: HTTPClientMock(
                 html: """
-                <HTML>
-                <HEAD>
-                    <TITLE>Success</TITLE>
-                </HEAD>
-                <BODY>Success</BODY>
-                </HTML>
-                """,
+                    <HTML>
+                    <HEAD>
+                        <TITLE>Success</TITLE>
+                    </HEAD>
+                    <BODY>Success</BODY>
+                    </HTML>
+                    """,
                 responseUrl: URL(string: "http://captive.apple.com")
             )
         )
@@ -50,18 +51,18 @@ final class TokyoTechWifiTests: XCTestCase {
             XCTAssertEqual(error as! TokyoTechWifiError, TokyoTechWifiError.alreadyConnected)
         }
     }
-    
+
     func testLoginIfNeed_OtherCaptiveWiFiError() async {
         let tokyoTechWiFi = TokyoTechWifi(
             httpClient: HTTPClientMock(
                 html: """
-                <HTML>
-                <HEAD>
-                    <TITLE>Need Login!!!</TITLE>
-                </HEAD>
-                <BODY></BODY>
-                </HTML>
-                """,
+                    <HTML>
+                    <HEAD>
+                        <TITLE>Need Login!!!</TITLE>
+                    </HEAD>
+                    <BODY></BODY>
+                    </HTML>
+                    """,
                 responseUrl: URL(string: "http://captive.apple.com")
             )
         )

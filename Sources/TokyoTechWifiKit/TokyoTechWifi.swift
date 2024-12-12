@@ -32,8 +32,8 @@ public struct TokyoTechWifi {
         if captivePageTitle.contains("Success") {
             throw TokyoTechWifiError.alreadyConnected
         }
-
-        if captivePageTitle.contains("TokyoTech") || captivePageTitle.contains("SciTokyo"), let responseUrl = captiveResult.responseUrl {
+        
+        if captivePageTitle.contains("TokyoTech") || captivePageTitle.contains("SciTokyo") || captivePageTitle.contains("ScienceTokyo"), let responseUrl = captiveResult.responseUrl {
             let postUrl = try PostURLParser.parse(htmlDoc: captiveHTMLDocument)
             let captivePageInputs = HTMLInputParser.parse(htmlDoc: captiveHTMLDocument)
             let injectedCaptivePageInputs = try HTMLInputInjector.inject(captivePageInputs, username: username, password: password)

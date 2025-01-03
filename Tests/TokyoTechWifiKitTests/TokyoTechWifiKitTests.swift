@@ -28,6 +28,19 @@ final class TokyoTechWifiTests: XCTestCase {
         try await tokyoTechWiFi.loginIfNeed(username: "", password: "")
         XCTAssert(true)
     }
+    
+    func testLoginIfNeed_Success_ScienceTokyoWiFi() async throws {
+        let html = try String(contentsOf: Bundle.module.url(forResource: "ScienceTokyoWiFiLoginPage", withExtension: "html")!)
+        let tokyoTechWiFi = TokyoTechWifi(
+            httpClient: HTTPClientMock(
+                html: html,
+                responseUrl: URL(string: "http://captive.apple.com")
+            )
+        )
+
+        try await tokyoTechWiFi.loginIfNeed(username: "", password: "")
+        XCTAssert(true)
+    }
 
     func testLoginIfNeed_AlreadyConnectedError() async {
         let tokyoTechWiFi = TokyoTechWifi(

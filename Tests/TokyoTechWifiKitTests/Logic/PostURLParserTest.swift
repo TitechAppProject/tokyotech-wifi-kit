@@ -23,6 +23,16 @@ final class PostURLParserTest: XCTestCase {
             URL(string: "https://n513.network-auth.com/SciTokyo/hi/U4Ce4dpf/login?continue_url=https%3A%2F%2Fwww.google.com")!
         )
     }
+    
+    func testParse_ScienceTokyoWiFi() throws {
+        let html = try! String(contentsOf: Bundle.module.url(forResource: "ScienceTokyoWiFiLoginPage", withExtension: "html")!)
+        let postUrl = try PostURLParser.parse(htmlDoc: try! HTML(html: html, encoding: .utf8))
+
+        XCTAssertEqual(
+            postUrl,
+            URL(string: "https://n513.network-auth.com/ScienceTokyo/hi/U4Ce4dpf/login?continue_url=https%3A%2F%2Fwww.google.com")!
+        )
+    }
 
     func testParse_Error() {
         let html = try! String(contentsOf: Bundle.module.url(forResource: "Example", withExtension: "html")!)

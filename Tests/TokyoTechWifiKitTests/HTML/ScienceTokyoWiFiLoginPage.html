@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html>
+<head><meta name='robots' content='none' /><base href="https://n513.network-auth.com/ScienceTokyo/hi/U4Ce4dpf/" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title> ScienceTokyo</title>
+  <style type="text/css" media="screen">
+    html { font-size: 100%;-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+form { margin: 0; }
+label { cursor: pointer; }
+button, input {
+  -webkit-appearance:none;
+  font-size: 100%;
+  margin: 0;
+  vertical-align: baseline;
+  *vertical-align: middle;
+  line-height: normal;
+  *overflow: visible;
+}
+button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
+
+a, a:visited, a:active {color: #fff; text-decoration: none;}
+
+.hidden { display: none; }
+
+body {
+  margin: 0;
+  background: #eee;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.4em;
+  font-family: georgia, palatino, serif;
+}
+
+h1, h2,  h3, p, a {
+  font-family: CiscoSans, helvetica, helvetica neue, verdana, tahoma, sans-serif;
+}
+h1 {
+  font-size: 30px;
+  font-weight: 100;
+  line-height: 35px;
+  color: #555;
+  margin: 0 0 1em;
+}
+h2 {
+  font-size: 14px;
+  font-weight: normal;
+}
+h3 {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: #888;
+}
+p{
+  color: #555;
+}
+
+.link_in_text a { color: #555 }
+
+.header {
+  border-bottom: 1px solid #ddd;
+  padding: 2em 0;
+  margin: 0 0 2em 0;
+}
+
+.header table { width: 100%; }
+#title_cell { vertical-align: bottom; }
+#icon_cell { text-align: center; }
+#icon_cell img {
+  max-width: 200px;
+  max-height: 100px;
+}
+
+#container {
+  max-width: 900px;
+  min-width: 300px;
+  margin: 0 auto;
+  background: #fff;
+  text-align: center;
+}
+
+#content {
+  background: #fff;
+}
+
+#continue {
+  padding: 2em;
+}
+
+#blocked {
+  padding: 2em;
+}
+
+#auth {
+  box-sizing: border-box;
+  padding: 0 1.5em 2em;
+}
+
+#left_col {
+  width: 100%;
+  margin-bottom: 3em;
+  text-align: left;
+}
+#left_col a{
+  color: #4169e1 ;
+  text-decoration: underline;
+
+}
+
+#right_col {
+  width: 100%;
+  text-align: left;
+  margin-top: 4em;
+  margin: 0 auto;
+}
+
+#account a {
+  color: #1795E6;
+  margin-right:  1em;
+  padding-right: 1em;
+  border-right: 1px solid #ccc;
+}
+
+#account a:hover {
+  color: #0876BD;
+}
+
+#account a:last-child {
+  border: none;
+}
+
+#sign_in {
+  background: #777777;
+  color: #ffffff;
+  border-radius: 2px;
+  margin: 2.5em 0 1em;
+  padding: 1em;
+  box-sizing: border-box;
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+}
+
+#sign_in:hover {
+  opacity: .85;
+}
+
+#blocked_msg {
+  text-align: center;
+  padding: 15px 0;
+}
+
+#claim_ap_msg {
+  text-align: center;
+  padding: 15px 0;
+}
+
+.formarea h3 {
+  line-height: 0;
+}
+
+.formarea input {
+  background: #eee;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  border-radius: 2px;
+  padding: .7em;
+  width: 100%;
+}
+
+#email_field {
+  margin-bottom: 1.5em;
+}
+
+.button {
+  color: #ffffff;
+  background: #777777;
+  padding: 1em 2em;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  display: inline-block;
+  margin: 1em 0;
+}
+
+.button:hover {
+  opacity: .85;
+}
+
+#forgot_password, .form_links:not(.hidden) {
+  display: inline;
+}
+
+#signin_form .form_links {
+  float: right;
+}
+
+#forgot_password a,
+.form_links a {
+  font-size:  12px;
+  color: #1795E6;
+}
+
+#forgot_password a:hover,
+.form_links a:hover {
+  color: #0876BD;
+}
+
+#forgot_password {
+  display: none;
+}
+
+#create_account_form h3 {
+  margin-top: 3em;
+}
+
+.footer {
+  width: 100%;
+  background: #eee;
+  border-top: 1px solid #ddd;
+  padding: 2em 0;
+  text-align: center;
+  display: inline-block;
+}
+
+.footer img {
+  margin: .5em 0;
+}
+
+.meraki_go_footer {
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #ddd;
+  padding: 2em 0;
+  text-align: center;
+  display: inline-block;
+}
+
+.meraki_go_footer img {
+  margin: .5em 0;
+}
+
+.error {
+  background: #eee;
+  border-radius: 2px;
+  border: 1px solid #ddd;
+  margin: 3em 3em 0;
+  box-sizing: border-box;
+  padding: 0 .5em;
+}
+
+.error p {
+  color: #999;
+  font-size: 12px;
+}
+
+.login-error {
+  background: #ffdddd;
+  border-radius: 2px;
+  border: 1px solid #ffb8b8;
+  box-sizing: border-box;
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+.login-error p {
+  color: #ff5959;
+  font-size: 12px;
+}
+
+.login-error img {
+  width: 11px;
+  margin: 5px 7px 0 0;
+}
+
+input:invalid, textarea:invalid { background-color: #f0dddd; }
+.formarea input:invalid, textarea:invalid { border-radius: 1px; -moz-box-shadow: 0px 0px 0px red; -webkit-box-shadow: 0px 0px 0px red; box-shadow: 0px 0px 0px red; }
+.formarea label.invalid {border: none; color: red; min-height: inherit; padding: 5px 0 0; margin: 0;}
+
+@media (min-width: 370px) {
+  #auth {
+    padding: 3em 3em 5em;
+  }
+  #left_col {
+    text-align: center;
+  }
+}
+
+@media (min-width: 550px) {
+  #auth {
+    padding: 3em 3em 5em;
+  }
+  #left_col {
+    width: 70%;
+    margin: 0 auto;
+    padding-bottom: 3em;
+    text-align: center;
+  }
+  #right_col {
+    width: 70%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 730px) {
+  #auth {
+    display: inline-block;
+    padding: 3em 3em 5em;
+  }
+  #left_col {
+    float: left;
+    text-align: left;
+    width: 50%;
+    padding-right: 3em;
+    box-sizing: border-box;
+  }
+  #right_col {
+    float: left;
+    width: 50%;
+    margin: 0;
+    padding-left: 3em;
+    box-sizing: border-box;
+  }
+}
+
+.GoSplash .header {
+  padding-top: 4em;
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.GoSplash #blocked {
+  padding-top: 1em;
+}
+
+.GoSplash .GoSplash__blockedIcon {
+  height: 8em;
+}
+
+.GoSplash .GoSplash__blockedIconLine--primary {
+  fill: #213A44;
+}
+
+.GoSplash .GoSplash__blockedIconLine--accent {
+  fill: #16E4D8;
+}
+
+.GoSplash h1 {
+  font-weight: 300;
+  color: #213A44;
+}
+
+.GoSplash p {
+  color: #666F77;
+}
+
+@media (max-width: 400px) {
+  .GoSplash .GoSplash__blockedIcon {
+    height: 6em;
+  }
+
+  .GoSplash .header {
+    padding-top: 2em;
+    padding-bottom: 0.5em;
+  }
+
+  .GoSplash h1 {
+    font-size: 24px;
+  }
+}
+
+  </style>
+  <link rel="stylesheet" type="text/css" href="cloud-add.css">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+
+<body>
+  <div id="content">
+    <div id="container">
+      <div class="header">
+        <div id="icon_cell"></div>
+      </div>
+
+      <div class="error hidden">
+        <p></p>
+      </div>
+
+      <div id="auth">
+        <div id="left_col">
+          <h1> ScienceTokyo Login</h1>
+          <p>情報基盤を利用するにあたり、 <a href="lrule.html">東京科学大学情報基盤利用承諾</a> をよく読み、理解し節度ある利用を行うことに同意する場合のみご利用ください。</p>
+          <p>違反者に対しては、認識の有無にかかわらず東京科学大学情報基盤の利用を停止し、その後の対応は全学または部局等の情報倫理委員会に委ねます。</p>
+          <h2 class="headbox">注意事項</h2>
+          <p>ログインに使用するアカウントおよびパスワードは、下記のとおりです。</p>
+          <p>【理工学系所属】理工学系Portalと同様<br>
+            　　（教職員番号, 学籍番号, Aカードなど）<br>
+            【医歯学系所属】Aruba認証時と同様<br>
+            　　（学内LANアカウント）
+          </p>
+        </div>
+
+        <div id="right_col">
+          <div class="login-error go-error-toggle hidden">
+            <p><img src="/images/warning_red.png" alt="Warning red" /><!-- ERROR_MESSAGES --></p>
+          </div>
+          <div id="signin_form" class="formarea">
+                  <form id="sign_in_form" onsubmit="javascript:return update_form_action_from_headers(document.getElementById(&quot;sign_in_form&quot;));" action="https://n513.network-auth.com/ScienceTokyo/hi/U4Ce4dpf/login?continue_url=https%3A%2F%2Fwww.google.com" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" />
+        <div id="signin_form" class="formarea">
+          <h3>ユーザー</h3>
+          <input id="email_field" name="email" type="text" required>
+          <h3>パスワード</h3>
+          <input id="password_field" name="password" type="password" class="jsAnalyticsExclude">
+          <input type="submit" name="commit" value="ログイン" class="btn btn-default" id="sign_in" />
+        </div>
+      </form>
+      <script type="text/javascript" charset="utf-8">
+        
+      </script>
+            <div id="forgot_password">
+        <a href="https://account.network-auth.com/account/reset_account_password">I forgot my password</a>
+      </div>
+
+            <script type="text/javascript" charset="utf-8">
+        var link = document.getElementById('resend_email_link');
+        var msg = document.getElementById('resend_email_message');
+        link.addEventListener("click", function(e) {
+          e.preventDefault();
+          var xmlhttp = new XMLHttpRequest();
+          xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
+              if (xmlhttp.status == 200) {
+                msg.innerHTML = "Email sent successfully.";
+              } else {
+                msg.innerHTML = "Your account cannot be verified by email. If you believe you are seeing this message in error, please contact the network administrator.";
+              }
+            }
+          };
+          xmlhttp.open("GET", link.href, true);
+          xmlhttp.send();
+        });
+      </script>
+
+
+            <div class="form_links hidden">
+              <a class="toggle_link" id="create_account_link" href="#">アカウント申請</a>
+            </div>
+          </div>
+
+          <div id="account" class="form_links hidden">
+            <div id="create_account_form" class="formarea hidden">
+              <h2><!-- Self registration is disabled --></h2>
+              <!-- Self registration is disabled -->
+              <div class="form_links">
+                <a class="toggle_link" id="signin_link" href="#">ログイン</a>
+              </div>
+            </div>
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="footer">
+    <h3>POWERED BY</h3>
+    <img width="100" alt="Cisco Meraki" src="/images/cisco-meraki-gray.png" />
+  </div>
+
+      <script type="text/javascript" charset="utf-8">
+        document.getElementById("create_account_form").style.display = 'none';
+
+        function show_signin() {
+          document.getElementById("signin_form").style.display = 'block';
+          document.getElementById("create_account_form").style.display = 'none';
+          do_prevent(arguments);
+          return false;
+        }
+
+        function show_create_account() {
+          document.getElementById("signin_form").style.display = 'none';
+          document.getElementById("create_account_form").style.display = 'block';
+          do_prevent(arguments);
+          return false;
+        }
+
+        function do_prevent(args) {
+          if(args.length > 0 && typeof(args[0].preventDefault) == 'function')
+            args[0].preventDefault();
+        }
+
+        if (document.addEventListener) {
+          var c_a_l = document.getElementById('create_account_link'); if (c_a_l) { c_a_l.addEventListener('click', show_create_account, true); }
+          var s_l = document.getElementById('signin_link'); if (c_a_l) { s_l.addEventListener('click', show_signin, true); }
+        } else if (document.attachEvent) {
+          var c_a_l = document.getElementById('create_account_link'); if (c_a_l) { c_a_l.attachEvent('onclick', show_create_account); }
+          var s_l = document.getElementById('signin_link'); if (c_a_l) { s_l.attachEvent('onclick', show_signin); }
+        }
+      </script>
+
+      <script type="text/javascript" charset="utf-8">
+        
+              function disable_subsequent_click() {
+                var sign_in_button = document.getElementById('sign_in');
+        if (sign_in_button != null) {
+          setTimeout('sign_in_button.disabled = false;', 60000);
+          sign_in_button.disabled = true;
+        }
+
+        return true;
+      }
+
+      function update_form_action_from_headers(form) {
+        disable_subsequent_click();
+        var _request = new XMLHttpRequest();
+        var url = 'https://n513.network-auth.com/ScienceTokyo/hi/U4Ce4dpf/login?continue_url=CONTINUE_URL_PLACEHOLDER';
+        _request.open('HEAD', window.location, true);
+        _request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        _request.onreadystatechange = function() {
+          if (_request.readyState === 4) {
+            var continue_url = _request.getResponseHeader('Continue-Url');
+            form.action = url.replace('CONTINUE_URL_PLACEHOLDER', continue_url);
+            form.submit();
+          }
+        }
+        _request.send(null);
+        return false;
+      }
+
+        
+      </script>
+
+</body>
+</html>
